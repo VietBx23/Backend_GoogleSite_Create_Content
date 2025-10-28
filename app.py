@@ -1,4 +1,3 @@
-# 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
 # filename: app.py
 """
 🔥 多关键词生成后端（Flask + OpenAI API）
@@ -24,12 +23,16 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from openai import OpenAI
-import json, re, time
+import json, re, time, os
 
 # ========================================
-# ⚙️ API Key（请在此粘贴你的 API Key）
+# ⚙️ 读取 API Key（从环境变量中获取）
 # ========================================
-OPENAI_API_KEY = "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"  # ← ⚠️ 记得替换
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("❌ 缺少 OPENAI_API_KEY 环境变量，请在 Render 上设置 Environment Variables。")
+
+# ✅ 使用 OpenRouter 代理（可换成官方 endpoint）
 client = OpenAI(api_key=OPENAI_API_KEY, base_url="https://openrouter.ai/api/v1")
 MODEL = "gpt-4o-mini"
 
@@ -138,4 +141,6 @@ def home():
 # 🚀 启动
 # ========================================
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Render 要求 app 监听在 PORT 环境变量上
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
