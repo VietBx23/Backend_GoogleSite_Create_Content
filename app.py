@@ -29,7 +29,7 @@ import json, re, time
 # ========================================
 # ⚙️ API Key（请在此粘贴你的 API Key）
 # ========================================
-OPENAI_API_KEY = "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"  # ← ⚠️ 记得替换
+OPENAI_API_KEY = "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"  # ← ⚠️ 记得替换
 client = OpenAI(api_key=OPENAI_API_KEY, base_url="https://openrouter.ai/api/v1")
 MODEL = "gpt-4o-mini"
 
