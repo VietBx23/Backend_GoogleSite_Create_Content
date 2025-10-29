@@ -80,10 +80,11 @@ def generate_content(main_kw, related_kws, url="http://191.run"):
         f"请为主关键词 \"{main_kw}\" 写一段中文介绍：\n"
         f"1. 必须以：{main_kw}【网址：{url}】开头；\n"
         f"2. 在后续描述中自然融入 3~5 个以下关键词：{related_str}；\n"
-        "3. 内容流畅自然，长度 120~180 字；\n"
-        "4. 不要换行，不要添加解释。"
+        f"3. 确保主关键词 \"{main_kw}\" 在内容中出现 3-5 次；\n"
+        "4. 内容流畅自然，长度 150~200 字；\n"
+        "5. 不要换行，不要添加解释。"
     )
-    text = call_chat(prompt, max_tokens=400, temperature=0.7)
+    text = call_chat(prompt, max_tokens=500, temperature=0.7)  # Tăng max_tokens để đảm bảo độ dài
     return " ".join(text.split())
 
 
