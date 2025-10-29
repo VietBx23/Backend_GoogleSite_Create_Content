@@ -79,7 +79,7 @@ def generate_content(main_kw, related_kws, url="http://191.run"):
     prompt = (
         f"请为主关键词 \"{main_kw}\" 写一段中文介绍：\n"
         f"1. 必须以：{main_kw}【网址：{url}】开头；\n"
-        f"2. 在后续描述中自然融入 3~5 个以下关键词：{related_str}；\n"
+        f"2. 在后续描述中自然融入 8~10 个以下关键词：{related_str}；\n"
         f"3. 确保主关键词 \"{main_kw}\" 在内容中出现 3-5 次；\n"
         "4. 内容流畅自然，长度 150~200 字；\n"
         "5. 不要换行，不要添加解释。"
@@ -145,3 +145,4 @@ if __name__ == "__main__":
     # Render 要求 app 监听在 PORT 环境变量上
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
+
