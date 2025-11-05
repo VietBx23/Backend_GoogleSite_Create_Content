@@ -57,10 +57,10 @@ def call_chat(prompt, max_tokens=300, temperature=0.6):
 def generate_related_keywords(main_kw):
     """生成 5 个相关关键词"""
     prompt = (
-        f"请为关键词：\"{main_kw}\" 生成5个相关的中文长尾关键词。\n"
-        "要求：与主题高度相关，每个约5~8字。\n"
-        "只输出JSON数组格式，例如: [\"词1\",\"词2\",...]\n"
-        "不要添加任何多余说明。"
+    f"请为关键词：\"{main_kw}\" 生成3个包含该关键词的中文长尾关键词。\n"
+    "要求：每个长尾词都必须包含主关键词，长度约5~8字，与主题高度相关。\n"
+    "只输出JSON数组格式，例如: [\"词1\",\"词2\",\"词3\"]。\n"
+    "不要添加任何多余说明。"
     )
     text = call_chat(prompt)
     try:
@@ -145,4 +145,5 @@ if __name__ == "__main__":
     # Render 要求 app 监听在 PORT 环境变量上
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
+
 
